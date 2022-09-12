@@ -1,0 +1,114 @@
+﻿@model ProyectoMVC3.Models.AutorBusqueda
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido</h1>
+    <form asp-controller="Home" asp-action="BuscarAutores" method="post">
+        <select id="cbOps" onchange="    FiltroCampos(this);" class="form-select">
+            <option value="" disabled selected>Seleccione un filtro...</option>
+            <option value="id">Id</option>
+            <option value="nombre">Nombre</option>
+            <option value="telefono">Teléfono</option>
+        </select>
+        <br />
+ 
+        <label asp-for="nombre" for="nombre" id="lbNombre" style="display:none">Nombre:</label>
+        <input asp-for="nombre" type="text" id="nombre" name="nombre" style="display:none" value="@Model.nombre">
+        <label asp-for="apellido" for="apellido" id="lbApellido" style="display:none">Apellido:</label>
+        <input asp-for="apellido" type="text" id="apellido" name="apellido" style="display:none">
+        <label for="genero" id="lbGenero" style="display:none">Genero:</label>
+
+        <select asp-for="Genero" id="genero" style="display:none">
+            <option value="" disabled selected></option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+
+        <label asp-for="id_autor" for="id_autor" id="lbIdAutor" style="display:none">ID Autor:</label>
+        <input asp-for="id_autor" type="text" id="id_autor" name="id_autor" style="display:none">
+
+        <label asp-for="telefono" for="telefono" id="lbPhone" style="display:none">Numero telefonico:</label>
+        <input asp-for="telefono" type="text" id="telefono" name="telefono" placeholder="809-159-4263" style="display:none">
+        <br />
+        <br />
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+        <a onclick="Limpiar();" class="btn btn-secondary">Limpiar</a>
+    </form>
+  
+    @{
+        if(Model.AutorLista != null){
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Apellido
+                            </th>
+                            <th>
+                                Teléfono
+                            </th>
+                            <th>
+                                Dirección
+                            </th>
+                            <th>
+                                Ciudad
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                País
+                            </th>
+                            <th>
+                                Cod Postal
+                            </th>
+                            <th>
+                                Genero
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AutorLista)
+                    {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.apellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ciudad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.estado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pais)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cod_postal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Genero)
+                                </td>
+                            </tr>
+                    }
+                    </tbody>
+            </table>
+        }
+    }
+    
+    @{/*<img alt="imgBenson" class="benson"  src="https://cn.i.cdn.ti-platform.com/content/76/regular-show/showpage/ve/showsquare.e41cc61c.png"/>*/}
+</div>

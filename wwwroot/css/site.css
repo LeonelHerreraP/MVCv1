@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  /*position: relative;*/
+  min-height: 100%;
+}
+
+body {
+    /*margin-bottom: 60px;*/
+    width: 100vw;
+}
+.benson {
+    /*width: 100vh;*/
+    /*position: relative;*/
+    /*right: 0;
+    bottom: 0;*/
+    height: 400px;
+    width: 200px;
+    display: block;
+    margin: 0;
+}
+
+.foot{
+    display: block;
+}
